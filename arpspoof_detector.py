@@ -1,4 +1,11 @@
 import scapy.all as scapy
+import argparse
+
+def get_interface():
+    parse = argparse.ArgumentParser()
+    parse.add_argument("-i", "--interface", dest="interface", help="Enter interface")
+    options = parse.parse_args()
+    return options
 
 def get_mac_address(target_ip):
     arp_request = scapy.ARP(pdst=target_ip)
@@ -20,4 +27,5 @@ def process_packet(packet):
         except IndexError:
             pass
 
-sniff("wlan0")
+options = get_interface()
+sniff(options.interface)

